@@ -63,6 +63,7 @@ class Student(models.Model):
 		return self.full_name()
 
 class Subject(models.Model):
+	instructor=models.ForeignKey(Instructor, default=1)
 	student=models.ManyToManyField(Student)
 	subject_code=models.CharField(max_length=20)
 	subject_title=models.CharField(max_length=60)

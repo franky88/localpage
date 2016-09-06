@@ -3,9 +3,28 @@
 {% block content %}
 	<h3>{{title}}</h3>
 	<h4>Fullname | {{instance.first_name}} {{instance.middle_name}} {{instance.last_name}} {{instance.extension_name}}</h4>
-	<table class="table table-hover">
+	<h4>Module: {{instance.block.module}}</h4>
+	<h4>Block: {{instance.block}}</h4>
+	<table class="table table-hover table-bordered">
 		<tr>
-			<th>Block</th>
+			<th>Subjects</th>
+			<th>Total number of hours</th>
+			<th>Time</th>
+			<th>Lab units</th>
+			<th>Lec units</th>
+			<th>Total units</th>
+			<th>Instructor</th>
 		</tr>
+		{% for subject in instance.subject_set.all %}
+		<tr>
+			<td>{{subject.subject_title}}</td>
+			<td>{{subject.duration}}</td>
+			<td>{% for time in subject.subjectschedule_set.all %}{{time.schedule}}<br>{% endfor %}</td>
+			<td>{{subject.lab_units}}</td>
+			<td>{{subject.lec_units}}</td>
+			<td>{{subject.total_units}}</td>
+			<td>{{subject.instructor}}</td>
+		</tr>
+		{% endfor %}
 	</table>
 {% endblock %}

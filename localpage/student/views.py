@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from student.models import SchoolYear, Semister, Module, Instructor, Block, Student, Subject, SubjectSchedule
 # Create your views here.
 def studentIndex(request):
-	student=Student.objects.all()
+	student=Student.objects.all().order_by('-id')
 	context={
 		"title": 'Student list',
 		"student_list": student,
