@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h3>{{title}}</h3>
+	<h4>Fullname | {{instance.first_name}} {{instance.middle_name}} {{instance.last_name}} {{instance.extension_name}}</h4>
+	<table class="table table-hover">
+		<tr>
+			<th>Block</th>
+		</tr>
+	</table>
+{% endblock %}

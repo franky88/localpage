@@ -66,15 +66,19 @@ class Subject(models.Model):
 	student=models.ManyToManyField(Student)
 	subject_code=models.CharField(max_length=20)
 	subject_title=models.CharField(max_length=60)
-	units=models.IntegerField(default=3)
+	lab_units=models.IntegerField()
+	lec_units=models.IntegerField()
 	duration=models.IntegerField(default=54)
+	def total_units(self):
+		total=self.lab_units+self.lec_units
+		return total
 	def __unicode__(self):
 		return self.subject_title
 
 class SubjectSchedule(models.Model):
 	subject=models.ForeignKey(Subject)
-	time_start=models.TimeField()
-	end_time=models.TimeField()
+	time_start=models.CharField(max_length=8)
+	end_time=models.CharField(max_length=8)
 	def schedule(self):
 		schedule="%s - %s"%(self.time_start, self.end_time)
 		return schedule

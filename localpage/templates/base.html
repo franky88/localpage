@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>{% block title %} {{title}} | localpage {% endblock %}</title>
 	<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
 	<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-theme.min.css' %}">
 </head>

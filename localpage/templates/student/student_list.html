@@ -5,18 +5,12 @@
 	<table class="table table-bordered table-hover">
 		<tr>
 			<th>ID Number</th>
-			<th>First name</th>
-			<th>Middle name</th>
-			<th>Last name</th>
-			<th>Extension name</th>
+			<th>Student names</th>
 		</tr>
 		{% for names in student_list %}
 		<tr>
-			<td><a href="">{{names.id_number}}</a></td>
-			<td>{{names.first_name}}</td>
-			<td>{{names.middle_name}}</td>
-			<td>{{names.last_name}}</td>
-			<td>{{names.extension_name}}</td>
+			<td><a href="{% url 'student:detail' pk=names.id %}">{{names.id_number}}</a></td>
+			<td>{{names.full_name}}</td>
 		</tr>
 		{% endfor %}
 	</table>

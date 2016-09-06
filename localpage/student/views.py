@@ -15,4 +15,4 @@ def studentDetail(request, pk):
 		"title": 'Student Detail',
 		"instance": instance,
 	}
-	return render(request, "student/student_list.html", context)
+	return render(request, "student/student_detail.html", context)
