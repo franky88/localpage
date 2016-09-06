@@ -66,8 +66,8 @@ class Subject(models.Model):
 	student=models.ManyToManyField(Student)
 	subject_code=models.CharField(max_length=20)
 	subject_title=models.CharField(max_length=60)
-	lab_units=models.IntegerField()
-	lec_units=models.IntegerField()
+	lab_units=models.IntegerField(default=0)
+	lec_units=models.IntegerField(default=0)
 	duration=models.IntegerField(default=54)
 	def total_units(self):
 		total=self.lab_units+self.lec_units
