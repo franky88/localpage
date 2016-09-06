@@ -2,7 +2,7 @@
 
 {% block content %}
 	<h3>{{title}} is working!</h3>
-	<table class="table table-hover">
+	<table class="table table-bordered table-hover">
 		<tr>
 			<th>ID Number</th>
 			<th>First name</th>
@@ -12,7 +12,7 @@
 		</tr>
 		{% for names in student_list %}
 		<tr>
-			<td>{{names.id_number}}</td>
+			<td><a href="">{{names.id_number}}</a></td>
 			<td>{{names.first_name}}</td>
 			<td>{{names.middle_name}}</td>
 			<td>{{names.last_name}}</td>

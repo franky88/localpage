@@ -8,6 +8,9 @@ class SchoolYear(models.Model):
 		school_year="%s - %s"%(self.start_of_school_year, self.end_of_school_year)
 		return school_year
 
+	def __unicode__(self):
+		return self.school_year()
+
 class Department(models.Model):
 	school_year=models.ForeignKey(SchoolYear)
 	department=models.CharField(max_length=60)
@@ -37,6 +40,9 @@ class Instructor(models.Model):
 		full_name="%s %s. %s %s"%(self.first_name, self.middle_name[0], self.last_name, self.extension_name)
 		return full_name
 
+	def __unicode__(self):
+		return self.full_name()
+
 class Block(models.Model):
 	module=models.ForeignKey(Module)
 	block_name=models.CharField(max_length=60)
@@ -49,7 +55,7 @@ class Student(models.Model):
 	first_name=models.CharField(max_length=60)
 	middle_name=models.CharField(max_length=60)
 	last_name=models.CharField(max_length=60)
-	extension_name=models.CharField(max_length=5)
+	extension_name=models.CharField(max_length=5, blank=True)
 	def full_name(self):
 		full_name="%s %s. %s %s"%(self.first_name, self.middle_name[0], self.last_name, self.extension_name)
 		return full_name
@@ -57,7 +63,7 @@ class Student(models.Model):
 		return self.full_name()
 
 class Subject(models.Model):
-	student=models.ForeignKey(Student)
+	student=models.ManyToManyField(Student)
 	subject_code=models.CharField(max_length=20)
 	subject_title=models.CharField(max_length=60)
 	units=models.IntegerField(default=3)
